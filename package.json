@@ -1,6 +1,6 @@
 {
   "name": "@pomofficial/redis",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Pomegranate Redis Plugin",
   "main": "index.js",
   "files": [
