@@ -24,10 +24,12 @@ export const Plugin = CreatePlugin('merge')
   })
   .hooks({
     load: async (Injector,PluginVariables, PluginLateError, PluginLogger) => {
-      let client = createClient(PluginVariables.port, PluginVariables.host, PluginVariables.clientOptions)
+      let client = Bluebird.promisifyAll(createClient(PluginVariables.port, PluginVariables.host, PluginVariables.clientOptions))
+
       client.on('error', (err) => {
         PluginLateError(err)
       })
+
       return new Bluebird((resolve, reject) => {
         client.on('ready', () => {
           resolve(client)
